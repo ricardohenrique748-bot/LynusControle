@@ -163,3 +163,18 @@
   from { opacity: 0; transform: translateX(-16px); }
   to { opacity: 1; transform: none; }
 }
+
+/* components/ui/floating-paths: lines are static; only the layer drifts (compositor-only, no repaint) */
+.floating-paths-layer {
+  will-change: transform, opacity;
+  animation: floating-paths-drift 26s ease-in-out infinite alternate;
+}
+.floating-paths-reverse {
+  animation-duration: 32s;
+  animation-direction: alternate-reverse;
+}
+@keyframes floating-paths-drift {
+  0% { transform: translate3d(-3%, 2%, 0) rotate(-1.5deg) scale(1.02); opacity: 0.55; }
+  50% { transform: translate3d(1%, -1%, 0) rotate(0.5deg) scale(1.05); opacity: 0.9; }
+  100% { transform: translate3d(3%, -2%, 0) rotate(1.5deg) scale(1.02); opacity: 0.6; }
+}

@@ -74,7 +74,7 @@ export function LoginPage() {
       <FloatingPathsBackground position={1} className="absolute inset-0" pathsClassName="text-[#6B8AFF]" />
       <FloatingPathsBackground position={-1} className="absolute inset-0" pathsClassName="text-[#36D0E8] opacity-70" />
 
-      <div className="relative z-10 w-full max-w-sm">
+      <div className="relative z-10 w-full max-w-sm isolate [will-change:transform]">
         <div className="flex flex-col items-center text-center mb-8">
           <h1>
             <LynusLogo title="Lynus Control" className="h-16 w-auto" />
@@ -85,7 +85,7 @@ export function LoginPage() {
         <form
           onSubmit={handleSubmit}
           noValidate
-          className="rounded-xl bg-slate-900/80 border border-slate-800 p-6 space-y-4 shadow-2xl shadow-black/40"
+          className="rounded-xl bg-slate-900/95 border border-slate-800 p-6 space-y-4 shadow-2xl shadow-black/40"
         >
           {error && (
             <div
@@ -160,7 +160,7 @@ export function LoginPage() {
         </form>
 
         {!isSupabaseConnected && (
-          <div className="mt-4 flex items-start gap-2 rounded-md bg-amber-950/80 border border-amber-500/30 px-3 py-2.5 text-xs text-amber-200">
+          <div className="mt-4 flex items-start gap-2 rounded-md bg-amber-950/95 border border-amber-500/30 px-3 py-2.5 text-xs text-amber-200">
             <Info className="w-4 h-4 mt-0.5 shrink-0" />
             <span>
               Modo demonstração: o Supabase ainda não está configurado no <code className="font-mono">.env</code>.

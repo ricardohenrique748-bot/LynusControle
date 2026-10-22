@@ -16,17 +16,15 @@ test('generates valid license key with correct checksum', () => {
 });
 
 test('detects tampered or malformed license key checksum', () => {
-  const validKey = generateLicenseKey('PDV');
+  // Fixed key: with a random one, the 8-bit checksum of the tampered key collides ~1 in 256 runs
+  const body = 'LYNUS-PDVX-ABCD-EFGH';
+  const validKey = `${body}-${calculateLicenseChecksum(body)}`;
   assert.equal(validateLicenseKeyChecksum(validKey), true);
 
-  // Tamper with one character
+  // Tamper with one block (reversed)
   const parts = validKey.split('-');
-  const tamperedBlock = parts[2].split('').reverse().join('');
-  const tamperedKey = `${parts[0]}-${parts[1]}-${tamperedBlock}-${parts[3]}-${parts[4]}`;
-  
-  if (tamperedBlock !== parts[2]) {
-    assert.equal(validateLicenseKeyChecksum(tamperedKey), false);
-  }
+  const tamperedKey = `${parts[0]}-${parts[1]}-DCBA-${parts[3]}-${parts[4]}`;
+  assert.equal(validateLicenseKeyChecksum(tamperedKey), false);
 
   // Malformed lengths
   assert.equal(validateLicenseKeyChecksum('INVALID-KEY'), false);
