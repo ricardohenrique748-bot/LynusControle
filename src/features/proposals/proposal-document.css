@@ -1,0 +1,331 @@
+/* Commercial proposal document — mirrors the Word model (A4, Calibri, navy #13305F, blue #2E9BD6) */
+
+.pd {
+  --pd-navy: #13305f;
+  --pd-blue: #2e9bd6;
+  --pd-light: #8cc8ea;
+  --pd-fill: #f2f5f9;
+  --pd-text: #1a1a1a;
+  --pd-top: 52mm; /* clears the logo of the letterhead */
+  --pd-bottom: 22mm;
+  --pd-side: 20mm;
+
+  color: var(--pd-text);
+  font-family: Calibri, Carlito, 'Segoe UI', Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.38;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.pd p {
+  margin: 0 0 2.2mm;
+}
+
+.pd strong {
+  font-weight: 700;
+}
+
+.pd .pd-indent {
+  text-indent: 10mm;
+}
+
+.pd .pd-right {
+  text-align: right;
+}
+
+.pd .pd-missing {
+  color: #b45309;
+  background: #fef3c7;
+  padding: 0 1mm;
+  border-radius: 1mm;
+}
+
+.pd .pd-rule {
+  width: 100%;
+}
+.pd .pd-rule-navy {
+  border-top: 0.8mm solid var(--pd-navy);
+}
+.pd .pd-rule-light {
+  border-top: 0.3mm solid var(--pd-light);
+}
+.pd .pd-rule-gray {
+  border-top: 0.25mm solid #9aa3ad;
+}
+
+/* ---------- Cover ---------- */
+.pd-cover {
+  padding: 66mm var(--pd-side) 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+.pd-cover .pd-rule-light {
+  margin-top: 7mm;
+}
+.pd-cover-meta {
+  margin-top: 7mm;
+  display: flex;
+  flex-direction: column;
+  gap: 1mm;
+  font-size: 10pt;
+}
+.pd-cover-kicker {
+  margin-top: 18mm;
+  color: var(--pd-blue);
+  font-size: 11.5pt;
+  letter-spacing: 1.6mm;
+}
+.pd-cover-kicker-rule {
+  margin-top: 6mm;
+  width: 37mm;
+  border-top: 0.6mm solid var(--pd-blue);
+}
+.pd-cover-title {
+  margin: 14mm 0 0;
+  color: var(--pd-navy);
+  font-size: 20pt;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.pd-cover-platform {
+  margin-top: 2mm;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.pd-cover-subtitle {
+  margin-top: 2mm;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 10pt;
+}
+.pd-cover-client {
+  margin-top: 8mm;
+  display: flex;
+  flex-direction: column;
+  font-size: 10pt;
+}
+.pd-cover-footer {
+  margin-top: 18mm;
+  border-top: 0.6mm solid var(--pd-navy);
+  padding: 4mm 3mm 9mm;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10pt;
+}
+.pd-cover-footer > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1mm;
+}
+.pd-cover .pd-rule-gray + .pd-rule-navy {
+  margin-top: 6mm;
+}
+
+/* ---------- Letter ---------- */
+.pd-letter {
+  padding: 70mm var(--pd-side) 0;
+}
+.pd-letter p {
+  margin-bottom: 1mm;
+}
+.pd-letter .pd-gap {
+  margin-top: 5mm;
+}
+.pd-letter .pd-gap-lg {
+  margin-top: 9mm;
+}
+.pd-letter .pd-indent {
+  margin-top: 3mm;
+}
+
+/* ---------- Body ---------- */
+.pd-body h2 {
+  margin: 7mm 0 2.5mm;
+  color: var(--pd-navy);
+  font-size: 11.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  break-after: avoid;
+}
+.pd-body h3 {
+  margin: 4mm 0 1.5mm;
+  color: var(--pd-navy);
+  font-size: 10.5pt;
+  font-weight: 700;
+  break-after: avoid;
+}
+.pd-body .pd-about-title {
+  margin-top: 0;
+  font-size: 9.5pt;
+}
+.pd-body .pd-about-title span {
+  color: var(--pd-blue);
+}
+.pd-body .pd-about-rule {
+  margin: 5mm 0 2mm;
+}
+.pd-body .pd-tight {
+  margin-bottom: 0.5mm;
+}
+
+.pd-list {
+  margin: 1mm 0 2.5mm;
+  padding-left: 12mm;
+  list-style: disc;
+}
+/* keep the sentence that introduces a list on the same page as the list */
+.pd p:has(+ .pd-list) {
+  break-after: avoid;
+}
+.pd-list li {
+  margin: 0 0 0.6mm;
+  break-inside: avoid;
+}
+.pd-list li::marker {
+  color: var(--pd-navy);
+}
+
+.pd-module {
+  break-inside: auto;
+}
+
+.pd-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2mm 0 3mm;
+  font-size: 10pt;
+}
+.pd-table th {
+  background: var(--pd-navy);
+  color: #fff;
+  font-weight: 700;
+  text-align: left;
+  padding: 1.6mm 3mm;
+}
+.pd-table td {
+  padding: 1.8mm 3mm;
+  border-bottom: 0.25mm solid #dfe5ec;
+}
+.pd-table tr {
+  break-inside: avoid;
+}
+.pd-table .pd-total td {
+  font-weight: 700;
+  background: var(--pd-fill);
+  border-bottom: none;
+}
+
+.pd-company {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6mm;
+  background: var(--pd-fill);
+  padding: 4mm 5mm;
+  break-inside: avoid;
+}
+.pd-company > div,
+.pd-rep {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8mm;
+}
+.pd-company > div > strong:first-child {
+  margin-bottom: 1mm;
+}
+.pd-rep a {
+  color: #0563c1;
+  text-decoration: underline;
+}
+.pd-closing {
+  margin-top: 10mm;
+  text-align: right;
+  break-inside: avoid;
+}
+
+/* ---------- Screen preview ---------- */
+.pd-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8mm;
+}
+.pd-sheet {
+  position: relative;
+  width: 210mm;
+  min-height: 297mm;
+  box-sizing: border-box;
+  background: #fff url('/proposal/letterhead.jpg') top left / 210mm 297mm no-repeat;
+  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.6);
+}
+.pd-sheet-flow {
+  background-repeat: repeat-y;
+  padding: var(--pd-top) var(--pd-side) var(--pd-bottom);
+}
+
+/* ---------- Print ---------- */
+.pd-print-root {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body > *:not(.pd-print-root) {
+    display: none !important;
+  }
+
+  .pd-print-root {
+    display: block;
+  }
+
+  .pd-print-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 210mm;
+    height: 297mm;
+    z-index: 0;
+  }
+
+  .pd-print-page,
+  .pd-print-flow {
+    position: relative;
+    z-index: 1;
+  }
+
+  .pd-print-page {
+    height: 296mm;
+    overflow: hidden;
+    break-after: page;
+  }
+
+  .pd-print-flow {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .pd-print-flow > thead > tr > td,
+  .pd-print-flow > tfoot > tr > td,
+  .pd-print-flow > tbody > tr > td {
+    padding: 0;
+  }
+  .pd-print-top {
+    height: var(--pd-top);
+  }
+  .pd-print-bottom {
+    height: var(--pd-bottom);
+  }
+  .pd-print-content {
+    padding: 0 var(--pd-side) !important;
+  }
+}
